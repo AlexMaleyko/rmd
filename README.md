@@ -37,6 +37,7 @@ BEGIN
 END
 ```
 ### Bat Algorithm
+Pseudocode:
 ```
 BEGIN
   Objective function f(x), x=(x1, ...,xd)^T
@@ -58,8 +59,46 @@ BEGIN
   END WHILE
   Postprocess results and visualization
   ```
-  
-  
-  
-  
+  ###Firefly Algorithm
+  Pseudocode:
   ```
+  Objective function f(x), x=(x_1, x_2, ... , x_d)^T
+  Initialize a population of fireflies x_i(i = 1,2, ..., n)
+  Define light absorption coefficient gamma
+  WHILE count < MaximumGeneratons
+    FOR i = 1:n (all n fireflies)
+      FOR j = 1:i
+        Light intensity Ii at x_i is determined by f(xi)
+        IF I_i > I_j
+          Move firefly i towards j in all d dimensions
+        ELSE
+          Move firefly i randomly
+        END IF
+      Attractiveness changes with distance r via exp[0gamma r2]
+      Determine new solutions and revise light intensity
+      END FOR j
+    END FOR i
+    Rank the fireflies according to light intensity and find the current best
+  END WHILE
+  ```
+  ### Cuckoo Search Optimization
+  Pseudocode:
+  ```
+  BEGIN
+    Generate start population of n nests x_j, (j = 1, 2, ... ,n)
+    REPEAT
+      Place cuckoo to point x_i randomly by performing Levy flights
+      Choose nest j among n nests randomly
+      IF F_i < F_j
+        Replace x_j on new solution
+      END IF
+      Delete from the population nests found with pa probability and build the same number of new nests
+      SAVE best solution (nest)
+    UNTIL stop criteria
+    Postprocess results and visualization
+    ```
+ ### Bacteria Foraging Optimization
+ Pseudocode:
+ ```
+ 
+  
