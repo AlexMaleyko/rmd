@@ -37,14 +37,15 @@ Save global best
 Pseudocode:
 ```
 BEGIN
-  Initialize the grey wolf population Xi (i = 1, 2, ..., n)
-  Initialize a, A, and C
+  Initialize randomly the grey wolf population
+  Find 1st, 2nd and 3rd best agents (alfa, beta, delta)
+  Set global best agent to 1st best agent
   Calculate the fitness of each search agent
   WHILE count < max number of iterations
     FOR each search agent
       Update te position of the current search agent
     END FOR
-    Update a, A, and C
+    Update alfa, beta and gamma
     Calculate the fitness of all search agents
     Update the best search agent, the 2nd best serach agent, and the 3rd best search agent
     ADD 1 to count
@@ -113,13 +114,49 @@ BEGIN
     UNTIL stop criteria
     Postprocess results and visualization
     ```
- ### Bacteria Foraging Optimization
+ ### Whale Swarm lblgorithm
  Pseudocode:
  ```
- 
- 
- 
- 
+ BEGIN
+  Initialize agents
+  Find current best
+  global best = current best
+  FOR t = 0:number of iterations
+    FOR each agent
+      find better and nearest
+      IF  Exists
+        move current agent in direction of its better and nearest
+      END IF
+      find current best
+      IF current best better than global best
+        SET global best to current best
+      END IF
+    END FOR
+   Save golobal best
+ ```
+ ###Firework Algorithm
+ ```
+ BEGIN
+  Initialize agents
+  Find current best
+  global best = current best
+  
+  FOR i= 0:nuber of agents
+    evaluate function value for current best and worst
+    FOR each agent
+      perform explosion
+      perform gausian mutation
+   END FOR
+   apply mapping rule
+   Select new agents according to the selection strategy
+   IF current best better than global best
+        SET global best to current best
+   END IF
+   END FOR
+  save global best
+END
+    
+  
  
  
  
