@@ -1,21 +1,37 @@
 # rmd
 ### Artificial Bee Algorithm
+current best
 Pseudocode:
 ```
 BEGIN
-Initialize the solution population xm, 1 = l, ..., SN
-Evaluate popoulation
-cycle = 1
-REPEAT
-Generate new solutions for the employed bees using (ii) and evaluate them.
-Keep the best solution between current and candidate
-Select the visited solution for onlooker bees bu their fitness
-Generate new solutions for the onlooker bees using (ii) and evaluate them
-Keep the best solution between current and candidate
-Determine if exist an abandoned food source and replace it using a cout bee
-Save in memory the best solution so far
-cycle = cycle + 1
-UNTIL cycle = M C N
+
+Initialize the population
+Find current best agent for the initial iteration
+SET global best to current best
+IF n <= 10
+  a = n - n%2
+  b = 1
+  c = 1
+  d = 1
+ELSE
+  a = n%10
+  b = 5
+  c = (n - a*b - a)%2
+  d = 2
+END IF
+FOR iterator = 0:iteration
+  evaluate fitness for each agent
+  sort fitness in ascending order and get best agents
+  from best agents list select agents from a to c
+  newbee?
+  self.scout=?
+  self_point=?
+  Evaluate current best agent
+  IF function(current best) < function (global best)
+    global best = current best
+  END IF
+END FOR
+Save global best
 ```
 ### Grey Wolf Optimization
 Pseudocode:
@@ -100,5 +116,18 @@ BEGIN
  ### Bacteria Foraging Optimization
  Pseudocode:
  ```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
   
