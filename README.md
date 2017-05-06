@@ -76,7 +76,7 @@ BEGIN
   END WHILE
   Postprocess results and visualization
   ```
-  ###Firefly Algorithm
+  ### Firefly Algorithm
   Pseudocode:
   ```
   Objective function f(x), x=(x_1, x_2, ... , x_d)^T
@@ -134,7 +134,7 @@ BEGIN
     END FOR
    Save golobal best
  ```
- ###Firework Algorithm
+ ### Firework Algorithm
  ```
  BEGIN
   Initialize agents
