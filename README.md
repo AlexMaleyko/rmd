@@ -113,8 +113,9 @@ BEGIN
       SAVE best solution (nest)
     UNTIL stop criteria
     Postprocess results and visualization
-    ```
- ### Whale Swarm lblgorithm
+  END
+  ```
+  ### Whale Swarm lblgorithm
  Pseudocode:
  ```
  BEGIN
@@ -133,6 +134,7 @@ BEGIN
       END IF
     END FOR
    Save golobal best
+ END
  ```
  ### Firework Algorithm
  Pseudocode:
