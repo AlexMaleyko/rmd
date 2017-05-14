@@ -246,4 +246,32 @@ BEGIN
       END IF
   END FOR
 END
-    
+```
+### Social Spider Algorightm
+Pseudocode:
+```
+BEGIN
+  Create the population of spiders
+  Initialize target vibration for each spider
+  FOR i = 0 : number of iterations
+    FOR each spider in population
+      Evaluate the fitness values of a spider
+      Generate a vibration at the position of the spider
+    END FOR
+    FOR each spider in population
+      Calculate the intensity of the vibrations generated bu other spiders
+      Select the strongest vibration from all vibrations
+      IF the intensit of the strongest vibration is larger than target vibration
+        target vibration = strongest vibration
+      END IF
+      Perform a random walk towards target vibration
+      Generate a random number rn from [0,1)
+      IF rn < p_j
+        Assign a random position to the spider
+      END IF
+      Attenuate the intensity of target vibration
+    END FOR
+  END FOR
+  Save the best solution
+END
+END
