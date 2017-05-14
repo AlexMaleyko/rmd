@@ -39,7 +39,7 @@ Pseudocode:
 BEGIN
   Initialize randomly the grey wolf population
   Find 1st, 2nd and 3rd best agents (alfa, beta, delta)
-  Set global best agent to 1st best agent
+  Set global best agent to the 1st best agent
   Calculate the fitness of each search agent
   WHILE count < max number of iterations
     FOR each search agent
@@ -197,12 +197,53 @@ Initialize randomly the bacteria foraging optimization population
 END
 ```
 
- 
- 
- 
- 
- 
- 
- 
- 
-  
+### Particle swarm optimization
+Pseudocode:
+```
+BEGIN
+  Initialize agents
+  Find current best
+  Set global best = current best
+  FOR i= 0 : number of iterations
+    Calculate particle velocity
+    Chage particles velocity
+    Update particles positions
+    Select new agents according to the selection strategy
+    IF current best better than global best
+      SET global best to current best
+    END IF
+  END FOR
+  save global best
+END
+```
+### Chicken Swarm Optimization
+Pseudocode:
+```
+BEGIN
+  Initialize a population of N chickens and define the related parameters
+  Evaluate the N chickens' fitness values
+  Find current best
+  Set global best = current best
+  FOR t = 0 : number of iterations
+    IF(t % G == 0)
+      Rank the chickens' fintess values and establish a hierarchal order in the swarm
+      Divide the swarm into different groups, and determine the relationship 
+      between the chicks and mother hens in a goup
+    END IF
+    FOR i = 1 : N
+      IF i == rooster
+        Update its solution and location using equation for roosters
+      END IF
+      IF i == hen
+        Update its solution and location using equation for hens
+      END IF
+      IF i == chick
+        Update its solution and location using equation for chicks
+      END IF
+      Evaluate current best
+      IF current best better than global best
+        SET global best to current best
+      END IF
+  END FOR
+END
+    
