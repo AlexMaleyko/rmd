@@ -1,38 +1,5 @@
 # rmd
-### Artificial Bee Algorithm
-current best
-Pseudocode:
-```
-BEGIN
 
-Initialize the population
-Find current best agent for the initial iteration
-SET global best to current best
-IF n <= 10
-  a = n - n%2
-  b = 1
-  c = 1
-  d = 1
-ELSE
-  a = n%10
-  b = 5
-  c = (n - a*b - a)%2
-  d = 2
-END IF
-FOR iterator = 0:iteration
-  evaluate fitness for each agent
-  sort fitness in ascending order and get best agents
-  from best agents list select agents from a to c
-  newbee?
-  self.scout=?
-  self_point=?
-  Evaluate current best agent
-  IF function(current best) < function (global best)
-    global best = current best
-  END IF
-END FOR
-Save global best
-```
 ### Grey Wolf Optimization
 Pseudocode:
 ```
@@ -76,6 +43,36 @@ BEGIN
   END WHILE
   Postprocess results and visualization
   ```
+  ### Artificial Bee Algorithm
+Pseudocode:
+```
+BEGIN
+Initialize the population
+Find current best agent for the initial iteration
+SET global best to current best
+IF n <= 10
+  a = n - n%2
+  b = 1
+  c = 1
+  d = 1
+ELSE
+  a = n%10
+  b = 5
+  c = (n - a*b - a)%2
+  d = 2
+END IF
+FOR iterator = 0:iteration
+  evaluate fitness for each agent
+  sort fitness in ascending order and get best agents
+  from best agents list select agents from a to c
+  Create new bees which will fly to the best solution
+  Evaluate current best agent
+  IF function(current best) < function (global best)
+    global best = current best
+  END IF
+END FOR
+Save global best
+```
   ### Firefly Algorithm
   Pseudocode:
   ```
@@ -274,4 +271,4 @@ BEGIN
   END FOR
   Save the best solution
 END
-END
+```
