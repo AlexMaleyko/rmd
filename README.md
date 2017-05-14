@@ -135,6 +135,7 @@ BEGIN
    Save golobal best
  ```
  ### Firework Algorithm
+ Pseudocode:
  ```
  BEGIN
   Initialize agents
