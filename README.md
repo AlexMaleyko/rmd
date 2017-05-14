@@ -160,7 +160,43 @@ BEGIN
 END
 ```
  
- 
+ ### Bacteria Foraging Optimization
+ Pseudocode:
+ ```
+BEGIN
+Initialize randomly the bacteria foraging optimization population
+  Calculate the fitness of each agent
+  Set global best agent to best agent
+  FOR number of iterations	
+    FOR number of reproduction steps
+      FOR number of chemotactic steps	
+        FOR each search agent
+          Move agent to the random direction
+          Calculate the fitness of the moved agent
+          FOR swimming length
+            IF current fitness is better than previous
+              Move agent to the same direction
+            ELSE
+              Move agent to the random direction
+            END IF
+          END FOR				
+        END FOR
+        Calculate the fitness of each agent
+      END FOR	
+      Compute and sort sum of fitness function of all chemotactic loops (health of agent)
+      Let live and split only half of the population according to their health
+    END FOR
+    Update the best search agent
+    IF not the last iteration
+      FOR each search agent
+        With some probability replace agent with new random generated
+      END FOR
+    END IF	
+    Calculate the fitness of each agent
+  END FOR
+END
+```
+
  
  
  
