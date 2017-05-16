@@ -1,56 +1,58 @@
+
 # rmd
 
 ### Grey Wolf Optimization
 Pseudocode:
-```
+<pre>
 BEGIN
-  Initialize randomly the grey wolf population
-  Find 1st, 2nd and 3rd best agents (alfa, beta, delta)
-  Set global best agent to the 1st best agent
-  Calculate the fitness of each search agent
-  WHILE count < max number of iterations
-    FOR each search agent
-      Update te position of the current search agent
-    END FOR
-    Update alfa, beta and gamma
-    Calculate the fitness of all search agents
-    Update the best search agent, the 2nd best serach agent, and the 3rd best search agent
-    ADD 1 to count
-  END WHILE
-  RETURN the best search agent
+&nbsp;&nbsp;Initialize randomly the grey wolf population
+&nbsp;&nbsp;Find 1st, 2nd and 3rd best agents (alfa, beta, delta)
+&nbsp;&nbsp;Set global best agent to the 1st best agent
+&nbsp;&nbsp;Calculate the fitness of each search agent
+&nbsp;&nbsp;WHILE count &lt; max number of iterations
+&nbsp;&nbsp;&nbsp;&nbsp;FOR each search agent
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update te position of the current search agent
+&nbsp;&nbsp;&nbsp;&nbsp;END FOR
+&nbsp;&nbsp;&nbsp;&nbsp;Update alfa, beta and gamma
+&nbsp;&nbsp;&nbsp;&nbsp;Calculate the fitness of all search agents
+&nbsp;&nbsp;&nbsp;&nbsp;Update the best search agent, the 2nd best serach agent, and the 3rd best search agent
+&nbsp;&nbsp;&nbsp;&nbsp;ADD 1 to count
+&nbsp;&nbsp;END WHILE
+&nbsp;&nbsp;RETURN the best search agent
 END
-```
+</pre>
+
 ### Bat Algorithm
 Pseudocode:
-```
+<pre>
 BEGIN
-  Objective function f(x), x=(x1, ...,xd)^T
-  Initialize the bat population x_i (i= 1, 2, ..., n) and v_i
-  Define pulse frequency f_i at x_i
-  Initialize pulse rates r_i and the loudness A_i
-  WHILE count < max number of iterations
+Objective function f(x), x=(x<sub>1</sub>, ...,x<sub>d</sub>)<sup>T</sup>
+Initialize the bat population x<sub>i</sub> (i= 1, 2, ..., n) and v<sub>i</sub>
+Define pulse frequency f<sub>i</sub> at x<sub>i</sub>
+Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
+  WHILE count &lt; max number of iterations
     Generate new solutions by adjusting frequency, and updating velocities and locations/solutions
-    IF rand > r_i
+    IF rand &gt; r<sub>i</sub>
       Select a solution among the best solutions 
       Generate a local solution around the selected best solution
     END IF
     Generate a new solution by flying randomly
-    IF rand < A_i AND f(x_i) < f(x_*)
+    IF rand &lt; A<sub>i</sub> AND f(x<sub>i</sub>) &lt; f(x<sub>*</sub>)
       Accept the new solutions
-      Increase r_i and reduce A_i
+      Increase r<sub>i</sub> and reduce A<sub>i</sub>
     END IF
-  Rank the bats and find the current best x_*
+    Rank the bats and find the current best x<sub>*</sub>
   END WHILE
   Postprocess results and visualization
-  ```
+  </pre>
   ### Artificial Bee Algorithm
 Pseudocode:
-```
+<pre>
 BEGIN
 Initialize the population
 Find current best agent for the initial iteration
 SET global best to current best
-IF n <= 10
+IF n &le; 10
   a = n - n%2
   b = 1
   c = 1
@@ -61,65 +63,65 @@ ELSE
   c = (n - a*b - a)%2
   d = 2
 END IF
-FOR iterator = 0:iteration
+FOR iterator = 0 : iteration
   evaluate fitness for each agent
   sort fitness in ascending order and get best agents
   from best agents list select agents from a to c
   Create new bees which will fly to the best solution
   Evaluate current best agent
-  IF function(current best) < function (global best)
+  IF function(current best) &lt; function (global best)
     global best = current best
   END IF
 END FOR
 Save global best
-```
+</pre>
   ### Firefly Algorithm
   Pseudocode:
-  ```
-  Objective function f(x), x=(x_1, x_2, ... , x_d)^T
-  Initialize a population of fireflies x_i(i = 1,2, ..., n)
+  <pre>
+  Objective function f(x), x=(x<sub>1</sub>, x<sub>2</sub>, ... , x<sub>d</sub>)<sup>T</sup>
+  Initialize a population of fireflies x<sub>i</sub>(i = 1, 2, ... , n)
   Define light absorption coefficient gamma
-  WHILE count < MaximumGeneratons
-    FOR i = 1:n (all n fireflies)
-      FOR j = 1:i
-        Light intensity Ii at x_i is determined by f(xi)
-        IF I_i > I_j
+  WHILE count &lt; MaximumGeneratons
+    FOR i = 1 : n (all n fireflies)
+      FOR j = 1 : i
+      Light intensity Ii at x<sub>i</sub> is determined by f(x<sub>i</sub>)
+      IF I<sub>i</sub> > I<sub>j</sub>
           Move firefly i towards j in all d dimensions
         ELSE
           Move firefly i randomly
         END IF
-      Attractiveness changes with distance r via exp[0gamma r2]
+        Attractiveness changes with distance r via exp[-&gamma; r<sub>2</sub>]
       Determine new solutions and revise light intensity
       END FOR j
     END FOR i
     Rank the fireflies according to light intensity and find the current best
   END WHILE
-  ```
+  </pre>
   ### Cuckoo Search Optimization
   Pseudocode:
-  ```
+ <pre>
   BEGIN
-    Generate start population of n nests x_j, (j = 1, 2, ... ,n)
+    Generate initial population of n nests x<sub>j</sub>, (j = 1, 2, ... ,n)
     REPEAT
-      Place cuckoo to point x_i randomly by performing Levy flights
+      Place cuckoo to point x<sub>i</sub> randomly by performing Levy flights
       Choose nest j among n nests randomly
-      IF F_i < F_j
-        Replace x_j on new solution
+      IF F<sub>i</sub> &lt; F<sub>j</sub>
+      Replace x<sub>j</sub> on new solution
       END IF
       Delete from the population nests found with pa probability and build the same number of new nests
       SAVE best solution (nest)
     UNTIL stop criteria
     Postprocess results and visualization
   END
-  ```
+  </pre>
   ### Whale Swarm lblgorithm
  Pseudocode:
- ```
+ <pre>
  BEGIN
   Initialize agents
   Find current best
   global best = current best
-  FOR t = 0:number of iterations
+  FOR t = 0 : number of iterations
     FOR each agent
       find better and nearest
       IF  Exists
@@ -132,16 +134,16 @@ Save global best
     END FOR
    Save golobal best
  END
- ```
+ </pre>
  ### Firework Algorithm
  Pseudocode:
- ```
+ <pre>
  BEGIN
   Initialize agents
   Find current best
   global best = current best
   
-  FOR i= 0:nuber of agents
+  FOR i= 0 : nuber of agents
     evaluate function value for current best and worst
     FOR each agent
       perform explosion
@@ -155,11 +157,11 @@ Save global best
    END FOR
   save global best
 END
-```
+</pre>
  
  ### Bacteria Foraging Optimization
  Pseudocode:
- ```
+ <pre>
 BEGIN
 Initialize randomly the bacteria foraging optimization population
   Calculate the fitness of each agent
@@ -192,7 +194,7 @@ Initialize randomly the bacteria foraging optimization population
     Calculate the fitness of each agent
   END FOR
 END
-```
+</pre>
 
 ### Particle swarm optimization
 Pseudocode:
@@ -246,7 +248,7 @@ END
 ```
 ### Social Spider Algorightm
 Pseudocode:
-```
+<pre>
 BEGIN
   Create the population of spiders
   Initialize target vibration for each spider
@@ -263,7 +265,7 @@ BEGIN
       END IF
       Perform a random walk towards target vibration
       Generate a random number rn from [0,1)
-      IF rn < p_j
+      IF rn &lt; p<sub>j</sub>
         Assign a random position to the spider
       END IF
       Attenuate the intensity of target vibration
@@ -271,4 +273,4 @@ BEGIN
   END FOR
   Save the best solution
 END
-```
+</pre>
