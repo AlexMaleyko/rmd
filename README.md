@@ -10,7 +10,7 @@ levels: alpha, beta, delta, and omega.<br>
 _Alpha_ wolves are the leaders of their pack. They are responsible for making decisions, but sometimes 
 alphas can obey to other wolfes of the pack.<br>
 _Beta_ wolves help alphas make decisions, every beta is a candidate 
-to become an alpha if one has died or aged.
+to become an alpha if an alpha has died or aged.
 A beta respects an alpha and transfers commands to the pack, ensures discipline among inferior wolves 
 and provides a feedback from the pack to an alpha.<br>
 _Delta_ wolves have to submit to alphas and betas, but they dominate the omega.<br>
@@ -37,7 +37,7 @@ BEGIN
 &nbsp;&nbsp;&nbsp;&nbsp;FOR each search agent
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update te position of the current search agent
 &nbsp;&nbsp;&nbsp;&nbsp;END FOR
-&nbsp;&nbsp;&nbsp;&nbsp;Update alfa, beta and gamma
+&nbsp;&nbsp;&nbsp;&nbsp;Update &alpha;, &beta; and &delta;
 &nbsp;&nbsp;&nbsp;&nbsp;Calculate the fitness of all search agents
 &nbsp;&nbsp;&nbsp;&nbsp;Update the best search agent, the 2nd best serach agent, and the 3rd best search agent
 &nbsp;&nbsp;&nbsp;&nbsp;ADD 1 to count
