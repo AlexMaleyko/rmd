@@ -1,12 +1,36 @@
 
 # rmd
 
-### Grey Wolf Optimization
-Pseudocode:
+### Gray Wolf Optimization
+The **Gray Wolf Optimization algorithm** mimics the leadership hierarchy and
+hunting mechanism of gray wolves in nature. Wolves live in a pack. 
+The average pack consists of a family of 5–12 animals.
+wolves have strict social hierarchy which is represented by the division of a pack into four
+levels: alpha, beta, delta, and omega.<br>
+_Alpha_ wolves are the leaders of their pack. They are responsible for making decisions, but sometimes 
+alphas can obey to other wolfes of the pack.<br>
+_Beta_ wolves help alphas make decisions, every beta is a candidate 
+to become an alpha if one has died or aged.
+A beta respects an alpha and transfers commands to the pack, ensures discipline among inferior wolves 
+and provides a feedback from the pack to an alpha.<br>
+_Delta_ wolves have to submit to alphas and betas, but they dominate the omega.<br>
+Finally, _omega_ wolves have to obey all other wolves. Sometimes they play a role of caretakers.<br><br>
+Gray wolf hunting has three main phases:
+* Tracking, chasing, and approaching the prey
+* Pursuing, encircling, and harassing the prey until it stops moving
+* Attack towards the prey
+#### Mathematical model
+In mathematical model of the social hierarchy 
+of wolves is mapped to the solution fit. The fittest 
+solution is considered to be the alpha. Beta and delta are the second and
+third best solutions respectively.
+The rest of the candidate solutions are assumed to be omega.<br>
+Alpha, beta and delta lead the hunting (optimization) and omega wolves follow these three wolves.
+#### Pseudocode:
 <pre>
 BEGIN
-&nbsp;&nbsp;Initialize randomly the grey wolf population
-&nbsp;&nbsp;Find 1st, 2nd and 3rd best agents (alfa, beta, delta)
+&nbsp;&nbsp;Initialize randomly the gray wolf population
+&nbsp;&nbsp;Find 1st, 2nd and 3rd best agents (&alpha;, &beta;, &delta;)
 &nbsp;&nbsp;Set global best agent to the 1st best agent
 &nbsp;&nbsp;Calculate the fitness of each search agent
 &nbsp;&nbsp;WHILE count &lt; max number of iterations
