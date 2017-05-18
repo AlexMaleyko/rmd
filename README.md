@@ -142,7 +142,16 @@ END FOR
 Save global best
 </pre>
   ### Firefly Algorithm
-  Pseudocode:
+  Most species of fireflies are able to glow producing short flashes. It is considered that the main function of flashes are to attract fireflies of the opposite sex and potential preys. Besides, a signal flash can communicate to a predator that a firefly has a bitter taste.
+  #### Mathematical model
+  The Firefly Algorithm is based on two important things: the change in light intensity and attractiveness. For simplicity, it is assumed that the attractiveness of a firefly is defined by its brightness which is connected with the objective function.<br>
+  The algorithm utilizes the following firefly behaviour model:<br>
+1. All fireflies are able to attract each other independently of their gender;
+2. A firefly attractiveness for other individuals is proportional to its brightness.
+3. Less attractive fireflies move in the direction of the most attractive one.
+4. As the distance between two fireflies increases, the visible brightness of the given firefly for the other decreases.
+5. If a firefly sees no firefly that is brighter than itself, it moves randomly.
+#### Algorithm
   <pre>
   Objective function f(x), x=(x<sub>1</sub>, x<sub>2</sub>, ... , x<sub>d</sub>)<sup>T</sup>
   Initialize a population of fireflies x<sub>i</sub>(i = 1, 2, ... , n)
@@ -163,6 +172,19 @@ Save global best
     Rank the fireflies according to light intensity and find the current best
   END WHILE
   </pre>
+   #### Arguments
+The fa method accepts the following arguments:<br>
+- csi: mutual attraction (default value is 1)
+- psi: light absorption coefficient of the medium (default value is 1)
+- alpha0: initial value of the free randomization parameter alpha (default value is 1)
+- alpha1: final value of the free randomization parameter alpha (default value is 0.1)
+- norm0: first parameter for a normal (Gaussian) distribution (default value is 0)
+- norm1: second parameter for a normal (Gaussian) distribution (default value is 0.1)
+#### Method invocation
+The method can be invoked by passing the arguments in the following order:
+```
+SwarmPackagePy.fa(n, function, lb, ub, dimension, iteration, csi, psi, alpha0, alpha1, norm0, norm1)
+```
   ### Cuckoo Search Optimization
   Pseudocode:
  <pre>
