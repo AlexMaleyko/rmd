@@ -99,13 +99,13 @@ Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
   </pre>
   #### Arguments
 The ba method accepts the following arguments:<br>
-r0: level of impulse emission (default value is 0.9)<br>
-V0: volume of sound (default value is 0.5)<br>
-fmin: min wave frequency (default value is 0)<br>
-fmax: max wave frequency (default value is 0.02)<br>
+- r0: level of impulse emission (default value is 0.9)<br>
+- V0: volume of sound (default value is 0.5)<br>
+- fmin: min wave frequency (default value is 0)<br>
+- fmax: max wave frequency (default value is 0.02)<br>
   fmin = 0 and fmax =0.02 - the bests values<br>
-alpha: constant for change a volume of sound (default value is 0.9)<br>
-csi: constant for change a level of impulse emission (default value is 0.9)
+- alpha: constant for change a volume of sound (default value is 0.9)<br>
+- csi: constant for change a level of impulse emission (default value is 0.9)
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
