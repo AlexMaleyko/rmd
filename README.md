@@ -46,8 +46,7 @@ BEGIN
 &nbsp;&nbsp;RETURN the best search agent
 END
 </pre>
-#### Method invocation
-##### Arguments
+#### Arguments
 The gwo method accepts the following arguments:
 **n**: number of agents
 **function**: test function
@@ -55,14 +54,14 @@ The gwo method accepts the following arguments:
 **ub**: upper limits for plot axes
 **dimension**: space dimension
 **iteration**: number of iterations
-
+#### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
 SwarmPackagePy.pso(n, function, lb, ub, dimension, iteration)
 ```
 ### Bat Algorithm
 #### Description
-The ** Bat Algorithm** is based on the bats echolocation ability. By using echolocation bats can detect
+The **Bat Algorithm** is based on the bats echolocation ability. By using echolocation bats can detect
 their food and preys and even distinguish between the different kinds of insects in the darkness.
 A bat emits a loud sound and listens to the echo which is created from the sound reflection from the surrounding objects.
 Sounds emmited by a bat are vary in properties and can be used depending on the hunting strategy.<br>
@@ -73,7 +72,9 @@ The number of signals emited by a bat can be increased during a hunt to 200.
 The Bat Algorithm uses the following principles:
 1. A bat uses echolocation for distance estimation and "knows" the difference between the food/prey and an obstacle
 2. Bats fly randomly with a velocity of &nu;<sub>i</sub> in the position x<sub>i</sub>, fixed frequency f<sub>min</sub>, variable wavelength &lambda;  and loudness A<sub>0</sub> for the search of a prey. They can automatically adjust the wave length (or frequency) of emitted sound impulse and level of emission r &isin; [0, 1] depending on the proximity to the victim.
-3. While the loudness can be changed by different means we suppose that the loudness vary from beg positive value A<sub>0</sub> to minimum constant A<sub>min</sub>.
+3. While the loudness can be changed by different means we assume that the loudness vary from big positive value A<sub>0</sub> to minimum constant A<sub>min</sub>.
+In addition to these simplified principles, lets use the next approximations: frequency f from the segment [f<sub>min</sub>, f<sub>max</sub>] corresponds to the wavelength segment [&lambda;<sub>min</sub>, &lambda;<sub>max</sub>]. For instance, a frequency segment [20 KHz, 500 KHz] corresponds to wavelength segment [0.7 mm, 17 mm].<br>
+For this tast any wave length can be used. Moreover, it is unnecessary to use wave lengths, instead we can change the frequency and leave the wave length to be constant.
 #### Algorithm
 <pre>
 BEGIN
@@ -96,6 +97,19 @@ Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
   END WHILE
   Postprocess results and visualization
   </pre>
+  #### Arguments
+The ba method accepts the following arguments:
+**n**: number of agents
+**function**: test function
+**lb**: lower limits for plot axes
+**ub**: upper limits for plot axes
+**dimension**: space dimension
+**iteration**: number of iterations
+#### Method invocation
+The method can be invoked by passing the arguments in the following order:
+```
+SwarmPackagePy.pso(n, function, lb, ub, dimension, iteration)
+```
   ### Artificial Bee Algorithm
 Pseudocode:
 <pre>
