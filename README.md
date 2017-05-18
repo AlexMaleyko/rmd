@@ -47,12 +47,12 @@ BEGIN
 END
 </pre>
 #### Arguments
-The gwo method accepts the following arguments:
-**n**: number of agents
-**function**: test function
-**lb**: lower limits for plot axes
-**ub**: upper limits for plot axes
-**dimension**: space dimension
+The gwo method accepts the following arguments:<br>
+**n**: number of agents<br>
+**function**: test function<br>
+**lb**: lower limits for plot axes<br>
+**ub**: upper limits for plot axes<br>
+**dimension**: space dimension<br>
 **iteration**: number of iterations
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
@@ -98,14 +98,13 @@ Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
   Postprocess results and visualization
   </pre>
   #### Arguments
-The ba method accepts the following arguments:
-
-r0: level of impulse emission (default value is 0.9)
-V0: volume of sound (default value is 0.5)
-fmin: min wave frequency (default value is 0)
-fmax: max wave frequency (default value is 0.02)
-  fmin = 0 and fmax =0.02 - the bests values
-alpha: constant for change a volume of sound (default value is 0.9)
+The ba method accepts the following arguments:<br>
+r0: level of impulse emission (default value is 0.9)<br>
+V0: volume of sound (default value is 0.5)<br>
+fmin: min wave frequency (default value is 0)<br>
+fmax: max wave frequency (default value is 0.02)<br>
+  fmin = 0 and fmax =0.02 - the bests values<br>
+alpha: constant for change a volume of sound (default value is 0.9)<br>
 csi: constant for change a level of impulse emission (default value is 0.9)
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
