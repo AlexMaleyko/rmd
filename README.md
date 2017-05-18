@@ -2,6 +2,7 @@
 # rmd
 
 ### Gray Wolf Optimization
+#### Description
 The **Gray Wolf Optimization algorithm** mimics the leadership hierarchy and
 hunting mechanism of gray wolves in nature. Wolves live in a pack. 
 The average pack consists of a family of 5–12 animals.
@@ -26,7 +27,7 @@ solution is considered to be the alpha. Beta and delta are the second and
 third best solutions respectively.
 The rest of the candidate solutions are assumed to be omega.<br>
 Alpha, beta and delta lead the hunting (optimization) and omega wolves follow these three wolves.
-#### Pseudocode:
+#### Algorithm
 <pre>
 BEGIN
 &nbsp;&nbsp;Initialize randomly the gray wolf population
@@ -45,9 +46,35 @@ BEGIN
 &nbsp;&nbsp;RETURN the best search agent
 END
 </pre>
+#### Method invocation
+##### Arguments
+The gwo method accepts the following arguments:
+**n**: number of agents
+**function**: test function
+**lb**: lower limits for plot axes
+**ub**: upper limits for plot axes
+**dimension**: space dimension
+**iteration**: number of iterations
 
+The method can be invoked by passing the arguments in the following order:
+```
+SwarmPackagePy.pso(n, function, lb, ub, dimension, iteration)
+```
 ### Bat Algorithm
-Pseudocode:
+#### Description
+The ** Bat Algorithm** is based on the bats echolocation ability. By using echolocation bats can detect
+their food and preys and even distinguish between the different kinds of insects in the darkness.
+A bat emits a loud sound and listens to the echo which is created from the sound reflection from the surrounding objects.
+Sounds emmited by a bat are vary in properties and can be used depending on the hunting strategy.<br>
+Each sound impulse lasts from 8 to 10 milliseconds and has constant frequency between 25 and 150 KHz.
+A bat can emit from 10 to 20 of supersonic impulses per second, an impulse lasts from 5 to 20 milliseconds.
+The number of signals emited by a bat can be increased during a hunt to 200.
+#### Mathematical model
+The Bat Algorithm uses the following principles:
+1. A bat uses echolocation for distance estimation and "knows" the difference between the food/prey and an obstacle
+2. Bats fly randomly with a velocity of &nu;<sub>i</sub> in the position x<sub>i</sub>, fixed frequency f<sub>min</sub>, variable wavelength &lambda;  and loudness A<sub>0</sub> for the search of a prey. They can automatically adjust the wave length (or frequency) of emitted sound impulse and level of emission r &isin; [0, 1] depending on the proximity to the victim.
+3. While the loudness can be changed by different means we suppose that the loudness vary from beg positive value A<sub>0</sub> to minimum constant A<sub>min</sub>.
+#### Algorithm
 <pre>
 BEGIN
 Objective function f(x), x=(x<sub>1</sub>, ...,x<sub>d</sub>)<sup>T</sup>
