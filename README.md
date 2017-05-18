@@ -99,16 +99,18 @@ Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
   </pre>
   #### Arguments
 The ba method accepts the following arguments:
-**n**: number of agents
-**function**: test function
-**lb**: lower limits for plot axes
-**ub**: upper limits for plot axes
-**dimension**: space dimension
-**iteration**: number of iterations
+
+r0: level of impulse emission (default value is 0.9)
+V0: volume of sound (default value is 0.5)
+fmin: min wave frequency (default value is 0)
+fmax: max wave frequency (default value is 0.02)
+  fmin = 0 and fmax =0.02 - the bests values
+alpha: constant for change a volume of sound (default value is 0.9)
+csi: constant for change a level of impulse emission (default value is 0.9)
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
-SwarmPackagePy.pso(n, function, lb, ub, dimension, iteration)
+SwarmPackagePy.ba(n, function, lb, ub, dimension, iteration, r0, V0, fmin, fmax, alpha, csi)
 ```
   ### Artificial Bee Algorithm
 Pseudocode:
