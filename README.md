@@ -186,6 +186,17 @@ The method can be invoked by passing the arguments in the following order:
 SwarmPackagePy.fa(n, function, lb, ub, dimension, iteration, csi, psi, alpha0, alpha1, norm0, norm1)
 ```
   ### Cuckoo Search Optimization
+#### Mathematical model
+In the CSO algorithm each egg in a nest represents the solution and a cuckoo's egg - the new one. The aim is to use potentially the best new solutions in order to substitute the less good solutions in nests. In the simliest case, each nest contains one egg.
+The algorithm is based on the following rules:
+1. Every cuckoo lay one egg in a time in a randomly chosen nest;
+2. The best nests with the eggs of high quality pass into a new generation;
+3. An egg laid by a cuckoo in a nest can be found by the nest owner with probability &ksi;<sub>a</sub>&isin;(0,1) and removed from the nest.
+The CSO algorithm scheme coulde be described in the following form:
+1. Initialize the population S={s<sub>i</sub>, i&isin;[1:|S}]} from |S| foreign nests and a cuckoo, i.e. define the initial values of for vector components X<sub>i</sub>, i&isin;[:|S|]} and cuckoo's initial position vector X<sub>C</sub>;
+2. Make a number of cuckoo's random moves in the search space by performing Levy flights and find the new cuckoo's position X<sub>C</sub>;
+3. Randomly pick a newt s<sub>i</sub>, i&isin;[1:|S|] and if f(X<sub>C</sub>) &gt; f(X<sub>i</sub>) then substitute an egg in this nest to the cuckoo's egg, i.e. X<sub>i</sub> = X<sub>C</sub>;
+4) With the probability &ksi;<sub>a</sub> remove a nubmer of the worst randomely chosen nests (including probably s<sub>i</sub> nest) from population and create the same number of new nests according to the 1st rule. 
   Pseudocode:
  <pre>
   BEGIN
