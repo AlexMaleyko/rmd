@@ -112,7 +112,10 @@ The method can be invoked by passing the arguments in the following order:
 SwarmPackagePy.ba(n, function, lb, ub, dimension, iteration, r0, V0, fmin, fmax, alpha, csi)
 ```
   ### Artificial Bee Algorithm
-Pseudocode:
+  The aim of a bee swarm is to find the area of a field with the highest density of flowers. WIthout any knoledge about a field bees begin the search of flowers from random positions with random velocity vectors. Each bee can remember positions where the maximul quantity of flowers was found and know where other bees found the maximum density of flowers. When a bee chooses between the place where it found the maximum quantity of flowers and the place which was reported by others, the bee rushes in direction between these two points and desides between personal memory and social reflex. On its way the bee can find a place with more high concentration of flowers than were found previously. In the future this place can be marked as the one with the highest concentration of flowers found by a swarm. After that the whole swarm will rush in the direction of this place, remembering though their own observations. Thus, bees research a field by flying to palces with the highest consentration of flowers. They also continuously compare places they flew over with previously found ones in order to found the absolute maxim concentration of flowers. In the end, a bee ends its flight in the place with the maximum concentration of flowers. Soon the whole swarm will locate in the neighborhood of that place.
+  #### Mathematical model
+  
+#### Algorithm
 <pre>
 BEGIN
 Initialize the population
