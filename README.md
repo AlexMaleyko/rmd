@@ -1,15 +1,23 @@
 
 # SwarmPackagePy
 **SwarmPackagePy** is a Library of swarm optimization algorithms. It includes 14 optimization algorithms and each can be used for solving specific optimization problem. You can find the principles they operate on and pseudo codes  below.<br>
-Every algorithm has arguments listed below:<br>
+Provides:<br>
+- Swarm optimization algorithms.
+- Test functions for swarm algorithms.
+- Animation of minimum find process.<br>
+<br>Every algorithm has arguments listed below:<br>
 - **n**: number of agents
 - **function**: test function
 - **lb**: lower limits for plot axes
 - **ub**: upper limits for plot axes
 - **dimension**: space dimension
 - **iteration**: number of iterations<br>
-<br>If an algorithm accepts some additional arguments, they will be described in its "Arguments" section.
+<br>Every algorithm has methods listed below:<br>
+- **get_agents()**: returns a history of all agents of the algorithm
+- **get_Gbest()**: returns the best position of algorithm<br>
+<br>If an algorithm accepts some additional arguments or methods they will be described in its "Arguments" or "Methods" section.
 ## Table of contents
+* [Installation](#installation)<br>
 * [Bacterial Foraging Optimization](#bacterial-foraging-optimization)<br>
 * [Gray Wolf Optimization](#gray-wolf-optimization)<br>
 * [Bat Algorithm](#bat-algorithm)<br>
@@ -23,7 +31,26 @@ Every algorithm has arguments listed below:<br>
 * [Social Spider Algorightm](#social-spider-algorightm)<br>
 * [Cat Algorithm](#cat-algorithm)<br>
 * [Harmony Search](#harmony-search)<br>
-* [Tests](#tests)
+* [Gravitational Search Algorithm](#gravitational-search-algorithm)<br>
+* [Tests](#tests)<br>
+* [Animation](#animation)<br>
+
+### Installation
+#### Requirements
+- python (version >= 3.5 if you are going to run tests)<br>
+- numpy<br>
+- pytest (if you are going to run tests)<br> 
+- matplotlib (if you are going to watch 2D animation)<br> 
+- pandas (if you are going to watch 3D animation)<br> 
+#### Installation
+You can install **SwarmPackagePy** from PyPI repositories using pip. Command bellow will do this:
+```
+pip install SwarmPackagePy
+```
+Or you can just clone this repository and at the main folder execute command:
+```
+python setup.py
+```
 
 ### Bacterial Foraging Optimization
 #### Description
@@ -70,36 +97,33 @@ BEGIN
 &nbsp;Calculate the fitness of each agent
 &nbsp;Set global best agent to best agent
 &nbsp;FOR number of iterations
-&nbsp;&nbsp;FOR number of reproduction steps
-&nbsp;&nbsp;&nbsp;FOR number of chemotactic steps
-&nbsp;&nbsp;&nbsp;&nbsp;FOR each search agent
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the random direction
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate the fitness of the moved agent
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOR swimming length
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF current fitness is better than previous
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the same direction
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the random direction
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END IF
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END FOR
+&nbsp;&nbsp;FOR number of chemotactic steps
+&nbsp;&nbsp;&nbsp;FOR each search agent
+&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the random direction
+&nbsp;&nbsp;&nbsp;&nbsp;Calculate the fitness of the moved agent
+&nbsp;&nbsp;&nbsp;&nbsp;FOR swimming length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF current fitness is better than previous
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the same direction
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Move agent to the random direction
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END IF
 &nbsp;&nbsp;&nbsp;&nbsp;END FOR
-&nbsp;&nbsp;&nbsp;&nbsp;Calculate the fitness of each agent
 &nbsp;&nbsp;&nbsp;END FOR
-&nbsp;&nbsp;&nbsp;Compute and sort sum of fitness function of all chemotactic loops (health of agent)
-&nbsp;&nbsp;&nbsp;Let live and split only half of the population according to their health
+&nbsp;&nbsp;&nbsp;Calculate the fitness of each agent
 &nbsp;&nbsp;END FOR
-&nbsp;&nbsp;Update the best search agent
+&nbsp;&nbsp;Compute and sort sum of fitness function of all chemotactic loops (health of agent)
+&nbsp;&nbsp;Let live and split only half of the population according to their health
 &nbsp;&nbsp;IF not the last iteration
 &nbsp;&nbsp;&nbsp;FOR each search agent
 &nbsp;&nbsp;&nbsp;&nbsp;With some probability replace agent with new random generated
 &nbsp;&nbsp;&nbsp;END FOR
 &nbsp;&nbsp;END IF
+&nbsp;&nbsp;Update the best search agent
 &nbsp;Calculate the fitness of each agent
 END
 </pre>
 #### Arguments
-The bfo method accepts the following arguments:
-**param Nr** number of reproduction steps<br>
+The bfo method accepts the following arguments:<br>
 **param Nc** number of chemotactic steps<br>
 **param Ns** swimming length<br>
 **param C** the size of step taken in the random direction specified by the tumble<br>
@@ -107,20 +131,20 @@ The bfo method accepts the following arguments:
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
-SwarmPackagePy.bfo(n, function, lb, ub, dimension, iteration, Nr, Nc, Ns, C, Ped)
+SwarmPackagePy.bfo(n, function, lb, ub, dimension, iteration, Nc, Ns, C, Ped)
 ```
 ### Gray Wolf Optimization
 #### Description
 The **Gray Wolf Optimization algorithm** mimics the leadership hierarchy and
-hunting mechanism of gray wolves in nature. Wolves live in a pack. 
+hunting mechanism of gray wolves in nature. Wolves live in a pack.
 The average pack consists of a family of 5–12 animals.
 wolves have strict social hierarchy which is represented by the division of a pack into four
 levels: alpha, beta, delta, and omega.<br>
-_Alpha_ wolves are the leaders of their pack. They are responsible for making decisions, but sometimes 
+_Alpha_ wolves are the leaders of their pack. They are responsible for making decisions, but sometimes
 alphas can obey to other wolfes of the pack.<br>
-_Beta_ wolves help alphas make decisions, every beta is a candidate 
+_Beta_ wolves help alphas make decisions, every beta is a candidate
 to become an alpha if an alpha has died or aged.
-A beta respects an alpha and transfers commands to the pack, ensures discipline among inferior wolves 
+A beta respects an alpha and transfers commands to the pack, ensures discipline among inferior wolves
 and provides a feedback from the pack to an alpha.<br>
 _Delta_ wolves have to submit to alphas and betas, but they dominate the omega.<br>
 Finally, _omega_ wolves have to obey all other wolves. Sometimes they play a role of caretakers.<br><br>
@@ -129,8 +153,8 @@ Gray wolf hunting has three main phases:
 * Pursuing, encircling, and harassing the prey until it stops moving
 * Attack towards the prey
 #### Mathematical model
-In mathematical model of the social hierarchy 
-of wolves is mapped to the solution fit. The fittest 
+In mathematical model of the social hierarchy
+of wolves is mapped to the solution fit. The fittest
 solution is considered to be the alpha. Beta and delta are the second and
 third best solutions respectively.
 The rest of the candidate solutions are assumed to be omega.<br>
@@ -162,6 +186,9 @@ The gwo method accepts the following arguments:<br>
 **ub**: upper limits for plot axes<br>
 **dimension**: space dimension<br>
 **iteration**: number of iterations
+#### Methods
+The gwo method has the following additional methods:<br>
+**get_leaders()**: return alpha, beta, delta leaders of grey wolfs
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
@@ -193,7 +220,7 @@ Initialize pulse rates r<sub>i</sub> and the loudness A<sub>i</sub>
   WHILE count &lt; max number of iterations
     Generate new solutions by adjusting frequency, and updating velocities and locations/solutions
     IF rand &gt; r<sub>i</sub>
-      Select a solution among the best solutions 
+      Select a solution among the best solutions
       Generate a local solution around the selected best solution
     END IF
     Generate a new solution by flying randomly
@@ -221,7 +248,7 @@ SwarmPackagePy.ba(n, function, lb, ub, dimension, iteration, r0, V0, fmin, fmax,
 ```
   ### Artificial Bee Algorithm
 The aim of a bee swarm is to find the area of a field with the highest density of flowers. WIthout any knoledge about a field bees begin the search of flowers from random positions with random velocity vectors. Each bee can remember positions where the maximul quantity of flowers was found and know where other bees found the maximum density of flowers. When a bee chooses between the place where it found the maximum quantity of flowers and the place which was reported by others, the bee rushes in direction between these two points and desides between personal memory and social reflex. On its way the bee can find a place with more high concentration of flowers than were found previously. In the future this place can be marked as the one with the highest concentration of flowers found by a swarm. After that the whole swarm will rush in the direction of this place, remembering though their own observations. Thus, bees research a field by flying to palces with the highest consentration of flowers. They also continuously compare places they flew over with previously found ones in order to found the absolute maxim concentration of flowers. In the end, a bee ends its flight in the place with the maximum concentration of flowers. Soon the whole swarm will locate in the neighborhood of that place.
-#### Mathematical model 
+#### Mathematical model
 In the Artificial Bee Algorithm model, the colony consists of three groups of bees: employed bees, onlookers and scouts. Scouts perform random search, employed bees collect previously found food and onlookers watch the dances of employed bees and choose food sources depending on dances. Onlookers and scouts are called non-working bees. Communication between bees is based on dances. Before a bee starts to collect food it watches dances of other bees. A dance is the way bees describe where food is.<br>
 Working and non-working bees search for rich food sources near their hive. A working bee keeps the information about a food source and share it with onlookers. Working bees whose solutions can't be improved after a definite number of attempts become scouts and their solutions are not used after that. The number of food sources represents the nuber of solutions in the population.  The position of a food source represents a possible solution to the optimization problem and the nectar amount of a food source corresponds to the quality (fitness) of the associated solution.
 #### Algorithm
@@ -327,6 +354,9 @@ The CSO algorithm scheme could be described in the following form:
 The cso method accepts the following arguments:<br>
 - pa: probability of cuckoo's egg detection (default value is 0.5)
 - nest: number of nests (default value is 100)
+#### Methods
+The cso method has the following additional methods:<br>
+**get_nests()**: return a history of cuckoos nests
 #### Method invocation
 The method can be invoked by passing the arguments in the following order:
 ```
@@ -380,7 +410,7 @@ To select the sparks for next generation, the selection strategy is used. Firewo
   Initialize agents
   Find current best
   global best = current best
-  
+
   FOR i= 0 : nuber of agents
     evaluate function value for current best and worst
     FOR each agent
@@ -462,7 +492,7 @@ BEGIN
   FOR t = 0 : number of iterations
     IF(t % G == 0)
       Rank the chickens' fintess values and establish a hierarchal order in the swarm
-      Divide the swarm into different groups, and determine the relationship 
+      Divide the swarm into different groups, and determine the relationship
       between the chicks and mother hens in a goup
     END IF
     FOR i = 1 : N
@@ -619,6 +649,26 @@ The method can be invoked by passing the arguments in the following order:
 ```
 SwarmPackagePy.hs(n, function, lb, ub, dimension, iteration, par=0.5, hmcr=0.5, bw=0.5)
 ```
+### Gravitational Search Algorithm
+The Gravitational Search Algorithm is based on the laws of gravitation and mass interaction. Basically, this algorithm is similar to Particle Swarm Optimization (PSO), since they are both based on the development of a multi-agent system.
+#### Mathematical model
+GSA operates with two laws:<br>
+* law of gravitation: each particle attracts other particles and force of gravity betweent two particles is directly proportional to the product of their masses and inversly proportional to the distance between them (one should pay attention to the fact that, unlike the law of universal gravitation, we don't use the square of the distance, as it results in better results of the algorithm).<br>
+<br>F<sub>1</sub> = F<sub>2</sub> = G * (m1&#9587;m2)*r<sup>-2</sup><br>
+
+* law of motion: the current velocity of any particle is equal to the sum of the part of the velocity at the previous instant of time and to the change in velocity which is equal to the force the system affects the particle with divided by the inertial mass of the particle.
+#### Algorithm
+<pre>
+1. Generate the system randomly;
+2. Determine the fitness of each particle;
+3. Update the value of the gravitational constant, masses and the best and the worst particle values;
+4. Calculate the resultant force in different directions;
+5. Calculate accelerations and velocities;
+6. Update particles' positions;
+7. Repeat steps 2 to 6 until the stop condition is reached.
+
+</pre>
+
 ### Tests
 All algorithms were tested with different test functions. In fact, you can run tests for all the algorithms on your own. All you need to do is to open terminal (console) and insert the following line:
 ```
@@ -629,10 +679,10 @@ Every algorithm is tested with the following set of test functions:<br>
 - Bukin function
 - Cross in tray function
 - Sphere function
-- Bohachevsky function 
+- Bohachevsky function
 - Sum squares function
 - Sum of different powers function
-- Booth function 
+- Booth function
 - Matyas function
 - McCormick function
 - Dixon price function
@@ -642,3 +692,31 @@ Every algorithm is tested with the following set of test functions:<br>
 - Michalewicz function
 - Beale function
 - drop wave function
+
+### Animation
+There are 2D animation and 3D animation of search process. The general way to start it is (example for pso algorithm):<br>
+#### 2D animation
+```
+# Compute the algorithm
+function = SwarmPackagePy.testFunctions.easom_function
+alh = SwarmPackagePy.pso(15, function, -10, 10, 2, 20)
+# Show animation
+animation(alh.get_agents(), function, 10, -10)
+```
+#### 3D animation
+```
+# Compute the algorithm
+function = SwarmPackagePy.testFunctions.easom_function
+alh = SwarmPackagePy.pso(15, function, -10, 10, 2, 20)
+# Show animation
+animation3D(alh.get_agents(), function, 10, -10)
+```
+#### Save the animation
+You can also save the animation of the search process. To do this, add as an animation argument sr=True. The example of saving animation:
+```
+# Compute the algorithm
+function = SwarmPackagePy.testFunctions.easom_function
+alh = SwarmPackagePy.pso(15, function, -10, 10, 2, 20)
+# Show animation
+animation(alh.get_agents(), function, 10, -10, sr=True)
+```
